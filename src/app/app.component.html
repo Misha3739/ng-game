@@ -1,0 +1,28 @@
+<div class="containter">
+  <div class="row">
+    <div class="col-xs-12 col-sm-7 col md-4">
+      <div class="panel-heading">
+      <h3>The Odd Game</h3>
+      </div>
+      <app-game-component
+        (GameStarted)="onGameStarted($event)"
+        (GameStopped) ="onGameStopped()"
+      ></app-game-component>
+    <hr/>
+
+      <div
+        *ngFor="let temp of numbers">
+        <div *ngIf="temp % 2 !== 0">
+          <app-even-component [number]="temp"></app-even-component>
+        </div>
+        <div *ngIf="temp % 2 === 0">
+          <app-odd-component [number]="temp"></app-odd-component>
+        </div>
+      </div>
+      <div *ngIf="gameIsStopped()">
+      <hr>
+        <p class="game-stopped">Game is stopped!</p>
+        </div>
+</div>
+</div>
+  </div>
